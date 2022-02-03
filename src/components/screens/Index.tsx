@@ -1,12 +1,12 @@
-import { Head } from '~/components/shared/Head';
+import { Head } from '~/components/shared/Head'
 
 function Index() {
-  return (
-    <>
-      <Head title="TOP PAGE" />
-      <div>sdd</div>
-    </>
-  );
+	return (
+		<>
+			<Head title="TOP PAGE" />
+			<div>sdd</div>
+		</>
+	)
 }
 
-export default Index;
+export default Index
