@@ -65,7 +65,7 @@ class Overworld {
 		const demoRoomMap = WorldMaps[WorldMapType.DemoRoom]
 
 		this.map = new OverworldMap(demoRoomMap)
-		console.log(this.map.walls)
+		this.map.mountObjects()
 
 		this.directionInput = new DirectionInput()
 		this.directionInput.init()

@@ -56,7 +56,8 @@ export default class Person extends GameObject {
 			//Stop if the space is not free
 			if (state.map.isSpaceTaken(this.x, this.y, this.direction)) return
 
-			// Walk
+			// Ready to Walk
+			state.map.moveWall(this.x, this.y, this.direction)
 			this.movingProgressRemaining = utils.gridSize
 		}
 	}

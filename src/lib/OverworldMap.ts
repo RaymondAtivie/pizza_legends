@@ -48,6 +48,29 @@ class OverworldMap {
 
 		return this.walls[`${x},${y}`] || false
 	}
+
+	mountObjects() {
+		Object.values(this.gameObjects).forEach((gameObject) => {
+			//TODO: determine if this object should actually mount
+
+			gameObject.mount(this)
+		})
+	}
+
+	addWall(x: number, y: number): void {
+		this.walls[`${x},${y}`] = true
+	}
+
+	removeWall(x: number, y: number): void {
+		delete this.walls[`${x},${y}`]
+	}
+
+	moveWall(wasX: number, wasY: number, direction: MovementDirection): void {
+		this.removeWall(wasX, wasY)
+
+		const { x, y } = utils.nextPosition(wasX, wasY, direction)
+		this.addWall(x, y)
+	}
 }
 
 export default OverworldMap
