@@ -16,8 +16,8 @@ const BaseCanvas = () => {
 
 	return (
 		<div className="flex items-center justify-center h-full bg-amber-600">
-			<div className="relative game-container scale-[4]" style={{ height: height + 'px', width: width + 'px' }}>
-				<canvas className="border bg-blue-50 game-canvas" width={width} height={height}></canvas>
+			<div className="game-container relative scale-[4]" style={{ height: height + 'px', width: width + 'px' }}>
+				<canvas className="border game-canvas bg-blue-50" width={width} height={height}></canvas>
 			</div>
 			{/* <GameObject ctx={overworld.ctx} image="./assets/characters/people/hero.png" x={4} y={4} /> */}
 		</div>
