@@ -129,9 +129,9 @@ class Sprite {
 		}
 	}
 
-	draw(ctx: CanvasRenderingContext2D) {
-		const x = this.gameObject.x - 8
-		const y = this.gameObject.y - 18
+	draw(ctx: CanvasRenderingContext2D, cameraPerson: GameObject) {
+		const x = this.gameObject.x - 8 + utils.withGrid(utils.xCameraNudge) - cameraPerson.x
+		const y = this.gameObject.y - 18 + utils.withGrid(utils.yCameraNudge) - cameraPerson.y
 
 		this.isShadowLoaded && this.shadow && ctx.drawImage(this.shadow, x, y)
 

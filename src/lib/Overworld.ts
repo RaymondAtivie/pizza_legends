@@ -26,23 +26,31 @@ class Overworld {
 
 	startGameLoop() {
 		const step = () => {
+			// If a map is loaded
 			if (this.map) {
+				//Clearance if the canvas
 				this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-				//Draw Lower layer
-				this.map.drawLowerImage(this.ctx)
+				//Establish the camera person
+				const cameraPerson = this.map.gameObjects.hero
 
-				//Draw Game Objects
+				// Update objects positions in the map before drawing anything
 				Object.values(this.map.gameObjects).forEach((object) => {
 					object.update({
 						arrow: this.directionInput?.direction,
 					})
+				})
 
-					object.sprite.draw(this.ctx)
+				//Draw Lower layer
+				this.map.drawLowerImage(this.ctx, cameraPerson)
+
+				//Draw Game Objects
+				Object.values(this.map.gameObjects).forEach((object) => {
+					object.sprite.draw(this.ctx, cameraPerson)
 				})
 
 				//Draw Upper layer
-				this.map.drawUpperImage(this.ctx)
+				this.map.drawUpperImage(this.ctx, cameraPerson)
 			}
 			requestAnimationFrame(() => {
 				step()
@@ -53,7 +61,7 @@ class Overworld {
 	}
 
 	init() {
-		const demoRoomMap = WorldMaps[WorldMapType.Kitchen]
+		const demoRoomMap = WorldMaps[WorldMapType.DemoRoom]
 
 		this.map = new OverworldMap(demoRoomMap)
 

@@ -3,7 +3,9 @@ import { animationType } from '../Sprite'
 
 export default class utils {
 	static gridSize = 16
-	static defaultFrameLimit = 8
+	static yCameraNudge = 6
+	static xCameraNudge = 10.5
+	static defaultFrameLimit = 5
 
 	static withGrid = (c: number): number => {
 		return c * utils.gridSize

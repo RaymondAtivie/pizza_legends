@@ -1,4 +1,5 @@
 import GameObject from './objects/GameObject'
+import utils from './utils/utils'
 
 type OverworldMapConfig = {
 	gameObjects: Record<string, GameObject>
@@ -21,12 +22,20 @@ class OverworldMap {
 		this.upperImage.src = config.upperSrc || ''
 	}
 
-	drawLowerImage(ctx: CanvasRenderingContext2D) {
-		ctx.drawImage(this.lowerImage, 0, 0)
+	drawLowerImage(ctx: CanvasRenderingContext2D, cameraPerson: GameObject) {
+		ctx.drawImage(
+			this.lowerImage,
+			utils.withGrid(utils.xCameraNudge) - cameraPerson.x,
+			utils.withGrid(utils.yCameraNudge) - cameraPerson.y,
+		)
 	}
 
-	drawUpperImage(ctx: CanvasRenderingContext2D) {
-		ctx.drawImage(this.upperImage, 0, 0)
+	drawUpperImage(ctx: CanvasRenderingContext2D, cameraPerson: GameObject) {
+		ctx.drawImage(
+			this.upperImage,
+			utils.withGrid(utils.xCameraNudge) - cameraPerson.x,
+			utils.withGrid(utils.yCameraNudge) - cameraPerson.y,
+		)
 	}
 }
 
