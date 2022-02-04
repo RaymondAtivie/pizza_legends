@@ -11,6 +11,28 @@ export default class utils {
 		return c * utils.gridSize
 	}
 
+	static asGridCoord = (x: number, y: number): string => {
+		return `${x * 16},${y * 16}`
+	}
+
+	static nextPosition(initialX: number, initialY: number, direction: MovementDirection): Record<string, number> {
+		let x = initialX
+		let y = initialY
+		const size = utils.gridSize
+
+		if (direction === MovementDirection.LEFT) {
+			x -= size
+		} else if (direction === MovementDirection.RIGHT) {
+			x += size
+		} else if (direction === MovementDirection.UP) {
+			y -= size
+		} else if (direction === MovementDirection.DOWN) {
+			y += size
+		}
+
+		return { x, y }
+	}
+
 	static directionToAnimation = (direction: MovementDirection, type: 'walk' | 'idle' = 'idle'): animationType => {
 		const idleMapping = {
 			[MovementDirection.UP]: animationType.idleUp,

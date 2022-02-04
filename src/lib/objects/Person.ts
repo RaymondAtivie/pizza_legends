@@ -1,6 +1,6 @@
-import { animationType } from './../Sprite'
 import utils from '../utils/utils'
 import GameObject, { GameObjectConfig, MovementDirection } from './GameObject'
+import OverworldMap from '../OverworldMap'
 
 interface PersonConfig extends GameObjectConfig {
 	isPlayerCntrolled?: boolean
@@ -26,32 +26,53 @@ export default class Person extends GameObject {
 		}
 	}
 
-	update(state: { arrow: MovementDirection }) {
-		this.updatePosition()
-		this.updateSprite(state)
+	update(state: { arrow: MovementDirection; map: OverworldMap }) {
+		if (this.movingProgressRemaining) {
+			this.updatePosition()
+		} else {
+			//TODO: More cases for starting to walk
+			//
+			//
 
-		if (this.isPlayerCntrolled && this.movingProgressRemaining === 0 && state.arrow) {
-			this.direction = state.arrow
+			// Case: we're keyboard ready and have an arrow pressed
+			if (this.isPlayerCntrolled && state.arrow) {
+				this.startBehavior(state, {
+					type: 'walk',
+					direction: state.arrow,
+				})
+			}
+
+			this.updateSprite()
+		}
+	}
+
+	startBehavior(state: { arrow: MovementDirection; map: OverworldMap }, behavior: any) {
+		// TODO: Change behavior to its own type
+
+		// Set the character direction to whatever behavior hass
+		this.direction = behavior.direction
+
+		if (behavior.type == 'walk') {
+			//Stop if the space is not free
+			if (state.map.isSpaceTaken(this.x, this.y, this.direction)) return
+
+			// Walk
 			this.movingProgressRemaining = utils.gridSize
 		}
 	}
 
 	updatePosition() {
-		if (this.movingProgressRemaining) {
-			const [axis, change] = this.directionUpdate[this.direction]
-
-			this[axis] += change
-			this.movingProgressRemaining--
-		}
+		const [axis, change] = this.directionUpdate[this.direction]
+		this[axis] += change
+		this.movingProgressRemaining--
 	}
 
-	updateSprite(state: { arrow: MovementDirection }) {
-		if (this.isPlayerCntrolled && this.movingProgressRemaining === 0 && !state.arrow) {
-			this.sprite.setAnimation(utils.directionToAnimation(this.direction))
-		}
-
+	updateSprite() {
 		if (this.movingProgressRemaining > 0) {
 			this.sprite.setAnimation(utils.directionToAnimation(this.direction, 'walk'))
+			return
 		}
+
+		this.sprite.setAnimation(utils.directionToAnimation(this.direction, 'idle'))
 	}
 }

@@ -31,10 +31,6 @@ class GameObject {
 		})
 	}
 
-	draw(ctx: CanvasRenderingContext2D) {
-		this.sprite.draw(ctx)
-	}
-
 	update(state: any) {}
 }
 

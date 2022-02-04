@@ -8,10 +8,13 @@ export enum WorldMapType {
 	Kitchen = 'Kitchen',
 }
 
+export type WallCoord = Record<string, boolean>
+
 export type WorldMap = {
 	lowerSrc: string
 	upperSrc: string
 	gameObjects: Record<string, GameObject>
+	walls?: WallCoord
 }
 
 export default {
@@ -30,6 +33,12 @@ export default {
 				y: utils.withGrid(8),
 				src: Assets.characters.npc1,
 			}),
+		},
+		walls: {
+			[utils.asGridCoord(7, 6)]: true,
+			[utils.asGridCoord(8, 6)]: true,
+			[utils.asGridCoord(7, 7)]: true,
+			[utils.asGridCoord(8, 7)]: true,
 		},
 	},
 	[WorldMapType.Kitchen]: {
