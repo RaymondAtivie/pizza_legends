@@ -53,7 +53,7 @@ class Overworld {
 	}
 
 	init() {
-		const demoRoomMap = WorldMaps[WorldMapType.DemoRoom]
+		const demoRoomMap = WorldMaps[WorldMapType.Kitchen]
 
 		this.map = new OverworldMap(demoRoomMap)
 

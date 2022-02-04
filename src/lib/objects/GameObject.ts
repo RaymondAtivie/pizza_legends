@@ -2,10 +2,10 @@ import Sprite from '../Sprite'
 import Assets from '../utils/Assets'
 
 export enum MovementDirection {
-	UP = 'UP',
-	DOWN = 'DOWN',
-	LEFT = 'LEFT',
-	RIGHT = 'RIGHT',
+	UP = 'Up',
+	DOWN = 'Down',
+	LEFT = 'Left',
+	RIGHT = 'Right',
 }
 
 export type GameObjectConfig = {

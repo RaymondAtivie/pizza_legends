@@ -1,3 +1,4 @@
+import { animationType } from './../Sprite'
 import utils from '../utils/utils'
 import GameObject, { GameObjectConfig, MovementDirection } from './GameObject'
 
@@ -25,11 +26,12 @@ export default class Person extends GameObject {
 		}
 	}
 
-	update({ arrow }: any) {
+	update(state: { arrow: MovementDirection }) {
 		this.updatePosition()
+		this.updateSprite(state)
 
-		if (this.isPlayerCntrolled && this.movingProgressRemaining === 0 && arrow) {
-			this.direction = arrow
+		if (this.isPlayerCntrolled && this.movingProgressRemaining === 0 && state.arrow) {
+			this.direction = state.arrow
 			this.movingProgressRemaining = utils.gridSize
 		}
 	}
@@ -40,6 +42,16 @@ export default class Person extends GameObject {
 
 			this[axis] += change
 			this.movingProgressRemaining--
+		}
+	}
+
+	updateSprite(state: { arrow: MovementDirection }) {
+		if (this.isPlayerCntrolled && this.movingProgressRemaining === 0 && !state.arrow) {
+			this.sprite.setAnimation(utils.directionToAnimation(this.direction))
+		}
+
+		if (this.movingProgressRemaining > 0) {
+			this.sprite.setAnimation(utils.directionToAnimation(this.direction, 'walk'))
 		}
 	}
 }

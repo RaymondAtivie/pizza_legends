@@ -15,7 +15,7 @@ const BaseCanvas = () => {
 	const height = 396 / 2
 
 	return (
-		<div className="flex items-center justify-center h-full ">
+		<div className="flex items-center justify-center h-full bg-amber-600">
 			<div className="relative game-container scale-[4]" style={{ height: height + 'px', width: width + 'px' }}>
 				<canvas className="border bg-blue-50 game-canvas" width={width} height={height}></canvas>
 			</div>

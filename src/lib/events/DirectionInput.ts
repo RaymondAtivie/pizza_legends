@@ -8,7 +8,7 @@ export default class DirectionInput {
 
 		this.map = {
 			ArrowUp: MovementDirection.UP,
-			keyW: MovementDirection.UP,
+			KeyW: MovementDirection.UP,
 			ArrowDown: MovementDirection.DOWN,
 			KeyS: MovementDirection.DOWN,
 			ArrowLeft: MovementDirection.LEFT,
@@ -28,8 +28,6 @@ export default class DirectionInput {
 
 			if (dir && !this.heldDirections.includes(dir)) {
 				this.heldDirections.unshift(dir)
-
-				console.log(this.heldDirections)
 			}
 		}
 		const handleKeyUp = (e: KeyboardEvent) => {
@@ -38,7 +36,6 @@ export default class DirectionInput {
 			const index = this.heldDirections.indexOf(dir)
 			if (index != -1) {
 				this.heldDirections.splice(index, 1)
-				console.log(this.heldDirections)
 			}
 		}
 
