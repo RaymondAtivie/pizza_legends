@@ -1,5 +1,11 @@
+import BaseCanvas from '~/components/game/BaseCanvas'
+
 function Main() {
-	return <main></main>
+	return (
+		<>
+			<BaseCanvas />
+		</>
+	)
 }
 
 export default Main
