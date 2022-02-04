@@ -1,15 +1,12 @@
-import GameObject from './GameObject'
+import GameObject from './objects/GameObject'
 import Assets from './utils/Assets'
 
 export enum animationType {
-	idleDown,
-	walkDown,
+	idleDown = 'idleDown',
+	walkDown = 'walkDown',
 }
 
-export type SpriteConfigAnimation = {
-	[animationType.idleDown]?: number[][]
-	[animationType.walkDown]?: number[][]
-}
+export type SpriteConfigAnimation = { [K in animationType]?: number[][] }
 
 export type SpriteConfig = {
 	animations?: SpriteConfigAnimation
@@ -63,8 +60,8 @@ class Sprite {
 	}
 
 	draw(ctx: CanvasRenderingContext2D) {
-		const x = this.gameObject.x * 16 - 8
-		const y = this.gameObject.y * 16 - 18
+		const x = this.gameObject.x - 8
+		const y = this.gameObject.y - 18
 
 		this.isShadowLoaded && this.shadow && ctx.drawImage(this.shadow, x, y)
 		this.isLoaded && ctx.drawImage(this.image, 0, 0, 32, 32, x, y, 32, 32)

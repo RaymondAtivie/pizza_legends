@@ -1,5 +1,5 @@
-import Sprite from './Sprite'
-import Assets from './utils/Assets'
+import Sprite from '../Sprite'
+import Assets from '../utils/Assets'
 
 export type GameObjectConfig = {
 	x?: number
@@ -20,6 +20,12 @@ class GameObject {
 			src: config.src || Assets.characters.hero,
 		})
 	}
+
+	draw(ctx: CanvasRenderingContext2D) {
+		this.sprite.draw(ctx)
+	}
+
+	update() {}
 }
 
 export default GameObject
