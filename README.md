@@ -2,21 +2,25 @@
 
 Starter using Vite + React + TypeScript + Tailwind with Firebase.
 
+This is a project that follows along with Drew Conley's RPG tutorials.
+
+See: https://www.youtube.com/watch?v=fyi4vfbKEeo
+
 ## Motivation
 
 Improve building your faster **prototyping** by using Vite, TypeScript, React, TailwindCSS, Firebase.
 
 This starter uses following libraries:
 
-- Vite
-- React
-  - React Router
-- TypeScript
-- Tailwind CSS
-  - daisyUI
-- Firebase(v9, modular)
-- ESLint
-- Prettier
+-   Vite
+-   React
+    -   React Router
+-   TypeScript
+-   Tailwind CSS
+    -   daisyUI
+-   Firebase(v9, modular)
+-   ESLint
+-   Prettier
 
 ## Set up
 
@@ -30,22 +34,22 @@ yarn dev
 
 If you **DO NOT** use Firebase, you should do:
 
-- Delete the Firebase-related code: you check Main.tsx, SignInButton.tsx, SignOutButton.tsx.
-- And then delete `src/lib/firebase.ts`
-- Run `yarn remove firebase`
-- Remove `VITE_FIREBASE_*` env values from `.env.local`
+-   Delete the Firebase-related code: you check Main.tsx, SignInButton.tsx, SignOutButton.tsx.
+-   And then delete `src/lib/firebase.ts`
+-   Run `yarn remove firebase`
+-   Remove `VITE_FIREBASE_*` env values from `.env.local`
 
 If you want to use Firebase, you should do:
 
-- copy Firebase env values from Firebase Console, and paste them to `.env.local`.
-- enable Google Auth in Firebase Console. ref: https://firebase.google.com/docs/auth/web/google-signin#before_you_begin
+-   copy Firebase env values from Firebase Console, and paste them to `.env.local`.
+-   enable Google Auth in Firebase Console. ref: https://firebase.google.com/docs/auth/web/google-signin#before_you_begin
 
 ## Vite
 
 [Vite](https://github.com/vitejs/vite) is a fast frontend build tool. According to the [README](https://github.com/vitejs/vite/blob/main/README.md), it consists of two major parts:
 
-- A dev server that serves your source files over native ES modules, with rich built-in features and astonishingly fast Hot Module Replacement (HMR).
-- A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.
+-   A dev server that serves your source files over native ES modules, with rich built-in features and astonishingly fast Hot Module Replacement (HMR).
+-   A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.
 
 ## React
 
@@ -59,7 +63,7 @@ Let's dive into React and Vite can use with React.
 
 [TypeScript](https://github.com/microsoft/TypeScript) is a superset of JavaScript. It is just one of NPM library, but it provides an original compiler.
 
-When you use TypeScript with React, you can write JSX with TypeScript, called TSX. Then you can develop views written by  **Type-Safe** template.
+When you use TypeScript with React, you can write JSX with TypeScript, called TSX. Then you can develop views written by **Type-Safe** template.
 
 ## Tailwind CSS
 
@@ -67,8 +71,7 @@ When you use TypeScript with React, you can write JSX with TypeScript, called TS
 
 In VSCode, I recommend to use [intellisense extension](https://tailwindcss.com/docs/intellisense).
 
-Frequently, React developers are worried about how to write CSS in TSX(JSX) template. You must choose from CSS Modules, [styled-components](https://styled-components.com/), [linaria](https://github.com/callstack/linaria), and so on.
-Additionally, CSS architecture is difficult about scoping, e.g. BEM, FLOCSS.
+Frequently, React developers are worried about how to write CSS in TSX(JSX) template. You must choose from CSS Modules, [styled-components](https://styled-components.com/), [linaria](https://github.com/callstack/linaria), and so on. Additionally, CSS architecture is difficult about scoping, e.g. BEM, FLOCSS.
 
 When you decide to use Tailwind, you only write utility-first CSS classes, you don't have to worry about them!
 
@@ -104,7 +107,7 @@ Please read: https://prettier.io/docs/en/integrating-with-linters.html.
 
 # ToDo
 
-- [x] install and set up [TailwindCSS/JIT](https://github.com/tailwindlabs/tailwindcss-jit) see this [PR](https://github.com/TeXmeijin/vite-react-ts-tailwind-starter/pull/1)
+-   [x] install and set up [TailwindCSS/JIT](https://github.com/tailwindlabs/tailwindcss-jit) see this [PR](https://github.com/TeXmeijin/vite-react-ts-tailwind-starter/pull/1)
 
 ---
 
