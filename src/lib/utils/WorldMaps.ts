@@ -1,4 +1,5 @@
 import GameObject from '../objects/GameObject'
+import Person from '../objects/Person'
 import Assets from './Assets'
 import utils from './utils'
 
@@ -18,14 +19,14 @@ export default {
 		lowerSrc: Assets.map.demo.lower,
 		upperSrc: Assets.map.demo.upper,
 		gameObjects: {
-			hero: new GameObject({
+			hero: new Person({
 				x: utils.withGrid(4),
-				y: utils.withGrid(6),
+				y: utils.withGrid(5),
 				src: Assets.characters.hero,
 			}),
-			npc1: new GameObject({
+			npc1: new Person({
 				x: utils.withGrid(8),
-				y: utils.withGrid(9),
+				y: utils.withGrid(8),
 				src: Assets.characters.npc1,
 			}),
 		},
@@ -34,12 +35,12 @@ export default {
 		lowerSrc: Assets.map.kitchen.lower,
 		upperSrc: Assets.map.kitchen.upper,
 		gameObjects: {
-			npcA: new GameObject({
+			npcA: new Person({
 				x: utils.withGrid(3),
 				y: utils.withGrid(5),
 				src: Assets.characters.npc3,
 			}),
-			npcB: new GameObject({
+			npcB: new Person({
 				x: utils.withGrid(9),
 				y: utils.withGrid(6),
 				src: Assets.characters.npc4,
