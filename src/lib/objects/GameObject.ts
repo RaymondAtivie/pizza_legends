@@ -35,7 +35,7 @@ class GameObject {
 		this.sprite.draw(ctx)
 	}
 
-	update() {}
+	update(state: any) {}
 }
 
 export default GameObject

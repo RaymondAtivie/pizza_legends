@@ -23,6 +23,7 @@ export default {
 				x: utils.withGrid(4),
 				y: utils.withGrid(5),
 				src: Assets.characters.hero,
+				isPlayerCntrolled: true,
 			}),
 			npc1: new Person({
 				x: utils.withGrid(8),

@@ -1,3 +1,4 @@
+import DirectionInput from './events/DirectionInput'
 import OverworldMap from './OverworldMap'
 import WorldMaps, { WorldMap, WorldMapType } from './utils/WorldMaps'
 
@@ -10,6 +11,7 @@ class Overworld {
 	canvas: HTMLCanvasElement
 	ctx: CanvasRenderingContext2D
 	map: OverworldMap | null
+	directionInput?: DirectionInput
 
 	constructor(config: OverworldConfig) {
 		if (config.element == null) throw new Error('Overworld element must not be null')
@@ -23,7 +25,6 @@ class Overworld {
 	}
 
 	startGameLoop() {
-		let loopHandler = 0
 		const step = () => {
 			if (this.map) {
 				this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -33,7 +34,9 @@ class Overworld {
 
 				//Draw Game Objects
 				Object.values(this.map.gameObjects).forEach((object) => {
-					object.update()
+					object.update({
+						arrow: this.directionInput?.direction,
+					})
 
 					object.sprite.draw(this.ctx)
 				})
@@ -44,23 +47,19 @@ class Overworld {
 			requestAnimationFrame(() => {
 				step()
 			})
-
-			// loopHandler = setTimeout(() => {
-			// 	step()
-			// }, 200)
 		}
 
 		step()
-
-		// setTimeout(() => {
-		// 	loopHandler && clearTimeout(loopHandler)
-		// }, 20000)
 	}
 
 	init() {
 		const demoRoomMap = WorldMaps[WorldMapType.DemoRoom]
 
 		this.map = new OverworldMap(demoRoomMap)
+
+		this.directionInput = new DirectionInput()
+		this.directionInput.init()
+
 		this.startGameLoop()
 	}
 }
