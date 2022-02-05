@@ -36,7 +36,7 @@ export default class Person extends GameObject {
 
 			// Case: we're keyboard ready and have an arrow pressed
 			if (this.isPlayerCntrolled && state.arrow) {
-				this.startBehavior(state, {
+				this.startBehaviour(state, {
 					type: 'walk',
 					direction: state.arrow,
 				})
@@ -46,7 +46,7 @@ export default class Person extends GameObject {
 		}
 	}
 
-	startBehavior(state: { arrow: MovementDirection; map: OverworldMap }, behavior: any) {
+	startBehaviour(state: { arrow: MovementDirection; map: OverworldMap }, behavior: any) {
 		// TODO: Change behavior to its own type
 
 		// Set the character direction to whatever behavior hass

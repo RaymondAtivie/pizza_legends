@@ -10,6 +10,7 @@ type OverworldMapConfig = {
 }
 
 class OverworldMap {
+	isCutscenePlaying: boolean = false
 	gameObjects: Record<string, GameObject>
 	lowerImage: HTMLImageElement
 	upperImage: HTMLImageElement
