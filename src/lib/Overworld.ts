@@ -1,4 +1,5 @@
 import DirectionInput from './events/DirectionInput'
+import { MovementDirection } from './objects/GameObject'
 import OverworldMap from './OverworldMap'
 import WorldMaps, { WorldMap, WorldMapType } from './utils/WorldMaps'
 
@@ -36,10 +37,12 @@ class Overworld {
 
 				// Update objects positions in the map before drawing anything
 				Object.values(this.map.gameObjects).forEach((object) => {
-					object.update({
-						arrow: this.directionInput?.direction,
-						map: this.map,
-					})
+					if (this.directionInput) {
+						object.update({
+							arrow: this.directionInput.direction,
+							map: this.map,
+						})
+					}
 				})
 
 				//Draw Lower layer

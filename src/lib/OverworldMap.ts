@@ -50,10 +50,12 @@ class OverworldMap {
 	}
 
 	mountObjects() {
-		Object.values(this.gameObjects).forEach((gameObject) => {
-			//TODO: determine if this object should actually mount
+		Object.keys(this.gameObjects).forEach((key) => {
+			const object = this.gameObjects[key]
+			object.id = key
 
-			gameObject.mount(this)
+			//TODO: determine if this object should actually mount
+			object.mount(this)
 		})
 	}
 

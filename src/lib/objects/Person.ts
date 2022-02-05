@@ -19,10 +19,10 @@ export default class Person extends GameObject {
 		this.isPlayerCntrolled = config.isPlayerCntrolled || false
 
 		this.directionUpdate = {
-			[MovementDirection.UP]: ['y', -1],
-			[MovementDirection.DOWN]: ['y', 1],
-			[MovementDirection.LEFT]: ['x', -1],
-			[MovementDirection.RIGHT]: ['x', 1],
+			[MovementDirection.Up]: ['y', -1],
+			[MovementDirection.Down]: ['y', 1],
+			[MovementDirection.Left]: ['x', -1],
+			[MovementDirection.Right]: ['x', 1],
 		}
 	}
 

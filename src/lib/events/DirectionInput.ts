@@ -7,14 +7,14 @@ export default class DirectionInput {
 		this.heldDirections = []
 
 		this.map = {
-			ArrowUp: MovementDirection.UP,
-			KeyW: MovementDirection.UP,
-			ArrowDown: MovementDirection.DOWN,
-			KeyS: MovementDirection.DOWN,
-			ArrowLeft: MovementDirection.LEFT,
-			KeyA: MovementDirection.LEFT,
-			ArrowRight: MovementDirection.RIGHT,
-			KeyD: MovementDirection.RIGHT,
+			ArrowUp: MovementDirection.Up,
+			KeyW: MovementDirection.Up,
+			ArrowDown: MovementDirection.Down,
+			KeyS: MovementDirection.Down,
+			ArrowLeft: MovementDirection.Left,
+			KeyA: MovementDirection.Left,
+			ArrowRight: MovementDirection.Right,
+			KeyD: MovementDirection.Right,
 		}
 	}
 

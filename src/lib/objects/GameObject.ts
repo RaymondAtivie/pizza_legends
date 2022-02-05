@@ -1,13 +1,12 @@
-import { WorldMap } from './../utils/WorldMaps'
 import Sprite from '../Sprite'
 import Assets from '../utils/Assets'
 import OverworldMap from '../OverworldMap'
 
 export enum MovementDirection {
-	UP = 'Up',
-	DOWN = 'Down',
-	LEFT = 'Left',
-	RIGHT = 'Right',
+	Up = 'Up',
+	Down = 'Down',
+	Left = 'Left',
+	Right = 'Right',
 }
 
 export type GameObjectConfig = {
@@ -15,23 +14,35 @@ export type GameObjectConfig = {
 	y?: number
 	src: string
 	direction?: MovementDirection
+	useShadow?: boolean
+	behaviourLoop?: BehaviorEvent[]
+}
+
+export type BehaviorEvent = {
+	type: 'walk' | 'stand'
+	direction: MovementDirection
+	time?: number
 }
 
 class GameObject {
+	id: string | number | null
 	x: number
 	y: number
 	sprite: Sprite
 	direction: MovementDirection
 	isMounted: boolean
+	behaviourLoop?: BehaviorEvent[]
 
 	constructor(config: GameObjectConfig) {
+		this.id = null
 		this.isMounted = false
 		this.x = config.x || 0
 		this.y = config.y || 0
-		this.direction = config.direction || MovementDirection.DOWN
+		this.direction = config.direction || MovementDirection.Down
 		this.sprite = new Sprite({
 			gameObject: this,
 			src: config.src || Assets.characters.hero,
+			useShadow: config.useShadow === undefined ? true : config.useShadow,
 		})
 	}
 

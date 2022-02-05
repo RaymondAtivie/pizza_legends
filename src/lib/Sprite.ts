@@ -20,7 +20,7 @@ export type SpriteConfig = {
 	currentAnimation?: animationType
 	src: string
 	gameObject: GameObject
-	useShadow?: boolean
+	useShadow: boolean
 	animationFrameLimit?: number
 }
 
@@ -49,7 +49,7 @@ class Sprite {
 		}
 
 		// Shadow
-		this.useShadow = config.useShadow || true
+		this.useShadow = config.useShadow == undefined ? true : config.useShadow
 		this.shadow = new Image()
 		if (this.useShadow) {
 			this.shadow.src = Assets.characters.shadow
@@ -91,7 +91,7 @@ class Sprite {
 		}
 
 		// Describes the state and patern of the animation
-		this.currentAnimation = config.currentAnimation || animationType.idleDown
+		this.currentAnimation = animationType.idleDown //config.currentAnimation || animationType.idleDown
 		this.currentAnimationFrame = 0
 
 		this.animationFrameLimit = config.animationFrameLimit || utils.defaultFrameLimit
@@ -101,7 +101,7 @@ class Sprite {
 		this.gameObject = config.gameObject
 	}
 
-	get frame() {
+	get frame(): number[] {
 		return this.animations[this.currentAnimation]![this.currentAnimationFrame]
 	}
 

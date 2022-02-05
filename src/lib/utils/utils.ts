@@ -20,13 +20,13 @@ export default class utils {
 		let y = initialY
 		const size = utils.gridSize
 
-		if (direction === MovementDirection.LEFT) {
+		if (direction === MovementDirection.Left) {
 			x -= size
-		} else if (direction === MovementDirection.RIGHT) {
+		} else if (direction === MovementDirection.Right) {
 			x += size
-		} else if (direction === MovementDirection.UP) {
+		} else if (direction === MovementDirection.Up) {
 			y -= size
-		} else if (direction === MovementDirection.DOWN) {
+		} else if (direction === MovementDirection.Down) {
 			y += size
 		}
 
@@ -35,17 +35,17 @@ export default class utils {
 
 	static directionToAnimation = (direction: MovementDirection, type: 'walk' | 'idle' = 'idle'): animationType => {
 		const idleMapping = {
-			[MovementDirection.UP]: animationType.idleUp,
-			[MovementDirection.DOWN]: animationType.idleDown,
-			[MovementDirection.LEFT]: animationType.idleLeft,
-			[MovementDirection.RIGHT]: animationType.idleRight,
+			[MovementDirection.Up]: animationType.idleUp,
+			[MovementDirection.Down]: animationType.idleDown,
+			[MovementDirection.Left]: animationType.idleLeft,
+			[MovementDirection.Right]: animationType.idleRight,
 		}
 
 		const walkMapping = {
-			[MovementDirection.UP]: animationType.walkUp,
-			[MovementDirection.DOWN]: animationType.walkDown,
-			[MovementDirection.LEFT]: animationType.walkLeft,
-			[MovementDirection.RIGHT]: animationType.walkRight,
+			[MovementDirection.Up]: animationType.walkUp,
+			[MovementDirection.Down]: animationType.walkDown,
+			[MovementDirection.Left]: animationType.walkLeft,
+			[MovementDirection.Right]: animationType.walkRight,
 		}
 
 		return type === 'idle' ? idleMapping[direction] : walkMapping[direction]

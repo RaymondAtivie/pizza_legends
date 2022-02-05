@@ -18,6 +18,12 @@ class Assets {
 			upper: './assets/maps/KitchenUpper.png',
 		},
 	}
+	static icons = {
+		chill: './assets/icons/chill.png',
+		fungi: './assets/icons/fungi.png',
+		spicy: './assets/icons/spicy.png',
+		veggie: './assets/icons/veggie.png',
+	}
 }
 
 export default Assets
